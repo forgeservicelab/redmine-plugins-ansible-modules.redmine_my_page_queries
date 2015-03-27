@@ -5,8 +5,16 @@
   git:
     accept_hostkey: yes
     ssh_opts: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
-    repo: ssh://gitlab@git.forgeservicelab.fi:10022/forge_redmine-plugins/redmine_backlogs.git
-    dest: "{{ redmine_dir }}"
+    repo: "{{ plugin_repo }}"
+    dest: "{{ redmine_dir }}/plugins/redmine_backlogs"
+
+- name: Ensure directory permissions
+  file:
+    path: "{{ redmine_dir }}/plugins/redmine_backlogs"
+    owner: "{{ sudo_user }}"
+    group: "{{ sudo_user }}"
+    recurse: yes
+    state: directory
 
 - name: Migrate db
   command: bundle exec rake db:migrate
@@ -14,14 +22,12 @@
     chdir: "{{ redmine_dir }}"
   environment:
     RAILS_ENV: "{{ RAILS_ENV }}"
-    sudo_user: "{{ sudo_user }}"
+  sudo_user: "{{ sudo_user }}"
 
 - name: Install
-  command: bundle exec rake redmine:backlogs:install story_trackers="{{ redmine_backlogs.story_trackers }}" task_tracker="{{ redmine_backlogs.task_tracker }}"
+  command: "bundle exec rake redmine:backlogs:install story_trackers={{ redmine_backlogs.story_trackers | join(',') }} task_tracker={{ redmine_backlogs.task_tracker }}"
   args:
     chdir: "{{ redmine_dir }}"
   environment:
     RAILS_ENV: "{{ RAILS_ENV }}"
-    sudo_user: "{{ sudo_user }}"
-
-
+  sudo_user: "{{ sudo_user }}"
