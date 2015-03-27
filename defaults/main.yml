@@ -1,0 +1,11 @@
+---
+# defaults file for redmine_backlogs_ansible
+
+redmine_dir: /opt/redmine
+RAILS_ENV: production
+sudo_user: redmine
+
+redmine_backlogs:
+  story_trackers: "Bug,Story,Risk,Change,Incident"
+  task_tracker: "Task"
+
