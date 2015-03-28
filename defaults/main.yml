@@ -1,6 +1,6 @@
 ---
 # defaults file for redmine_backlogs_ansible
-
+plugin_name: redmine_backlogs
 redmine_dir: /opt/redmine
 RAILS_ENV: production
 sudo_user: redmine

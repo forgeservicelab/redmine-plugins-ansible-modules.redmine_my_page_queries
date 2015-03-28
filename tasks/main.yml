@@ -1,21 +1,5 @@
 ---
 # tasks file for redmine_backlogs_ansible
-
-- name: Fetch from git
-  git:
-    accept_hostkey: yes
-    ssh_opts: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
-    repo: "{{ plugin_repo }}"
-    dest: "{{ redmine_dir }}/plugins/redmine_backlogs"
-
-- name: Ensure directory permissions
-  file:
-    path: "{{ redmine_dir }}/plugins/redmine_backlogs"
-    owner: "{{ sudo_user }}"
-    group: "{{ sudo_user }}"
-    recurse: yes
-    state: directory
-
 - name: Migrate db
   command: bundle exec rake db:migrate
   args:
