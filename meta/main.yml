@@ -10,4 +10,5 @@ galaxy_info:
     versions:
     - trusty
 dependencies:
-  - generic_install
+  - name: generic_install
+    src: git+ssh://gitlab@git.forgeservicelab.fi:10022/redmine-plugins-ansible-modules/generic_install.git
