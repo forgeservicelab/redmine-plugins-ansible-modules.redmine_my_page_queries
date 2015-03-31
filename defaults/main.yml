@@ -1,15 +1,6 @@
 ---
-# defaults file for redmine_backlogs_ansible
-plugin_name: redmine_backlogs
+# defaults file for redmine_my_page_queries
+plugin_name: redmine_my_page_queries
 redmine_dir: /opt/redmine
 RAILS_ENV: production
 sudo_user: redmine
-
-redmine_backlogs:
-  task_tracker: Task
-  story_trackers:
-    - Bug
-    - Story
-    - Risk
-    - Change
-    - Incident

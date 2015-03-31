@@ -1,15 +1,7 @@
 ---
-# tasks file for redmine_backlogs_ansible
+# tasks file for redmine_my_page_queries
 - name: Migrate db
-  command: bundle exec rake db:migrate
-  args:
-    chdir: "{{ redmine_dir }}"
-  environment:
-    RAILS_ENV: "{{ RAILS_ENV }}"
-  sudo_user: "{{ sudo_user }}"
-
-- name: Install
-  command: "bundle exec rake redmine:backlogs:install story_trackers={{ redmine_backlogs.story_trackers | join(',') }} task_tracker={{ redmine_backlogs.task_tracker }}"
+  command: bundle exec rake my_page_queries:upgrade
   args:
     chdir: "{{ redmine_dir }}"
   environment:

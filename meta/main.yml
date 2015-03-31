@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: Pasi Kivikangas
-  description: Redmine backlogs plugin
+  author: Jorge Rodriguez
+  description: Redmine custom page queries plugin
   company: Digile Oy
   license: license (BSD)
   min_ansible_version: 1.8
